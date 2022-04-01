@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../../shared/modules/shared.module';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 
 @NgModule({

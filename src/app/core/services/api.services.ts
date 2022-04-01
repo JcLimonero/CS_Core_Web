@@ -93,6 +93,7 @@ export class ApiService {
    * @param id Object/data identifier
    */
   public delete(endpoint: string, id: string): Observable<any> {
+    console.log(id)
     return this.httpClient
       .delete(`${this.url}/${endpoint}/${id}`)
       .pipe(map((data: any) => {        

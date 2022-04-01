@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AboutRoutingModule } from './about-routing.module';
 import { AboutHomeComponent } from './about-home/about-home.component';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../../shared/modules/shared.module';
 
 @NgModule({
   declarations: [AboutHomeComponent],

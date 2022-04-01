@@ -3,14 +3,14 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CustomMaterialModule } from '../custom-material/custom-material.module';
-import { LimitToPipe } from './pipes/limit-to.pipe';
-import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
-import { LocalDatePipe } from './pipes/local-date.pipe';
-import { YesNoPipe } from './pipes/yes-no.pipe';
+import { CustomMaterialModule } from './custom-material.module';
+import { LimitToPipe } from '../pipes/limit-to.pipe';
+import { ConfirmDialogComponent } from '../components/dialogs/confirm-dialog/confirm-dialog.component';
+import { LocalDatePipe } from '../pipes/local-date.pipe';
+import { YesNoPipe } from '../pipes/yes-no.pipe';
 import {MatCardModule} from '@angular/material/card'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PortalInterceptor } from './Interceptors/portal.interceptor';
+import { PortalInterceptor } from '../Interceptors/portal.interceptor';
 
 @NgModule({
   imports: [

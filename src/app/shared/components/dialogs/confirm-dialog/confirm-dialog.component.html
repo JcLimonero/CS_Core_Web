@@ -2,11 +2,10 @@
   {{title}}
 </h1>
 
-<div mat-dialog-content>
-  <p>{{message}}</p>
+<div style="margin-top: 15px; margin-bottom: 15px;" mat-dialog-content [innerHtml]="message">
 </div>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onDismiss()">No</button>
-  <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+<div mat-dialog-actions style="justify-content: space-around;">
+  <button mat-button style="background-color: crimson; color: white;"  (click)="onDismiss()">Cancelar</button>
+  <button mat-raised-button style="background-color: green; color: white;" (click)="onConfirm()">Aceptar</button>
 </div>
