@@ -1,0 +1,67 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  
+  <div fxFlex="100%">
+
+    <div class="bread-crumbs-bar">
+      <span class="bread-crumb-item">Configuración</span>
+      <div class="bread-crumbs-separator">/</div>
+      <span class="bread-crumb-item-selected">Usuarios</span>
+    </div>
+
+    <mat-card>
+      <mat-card-content>
+        <mat-table  [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"><span class="ellipsis">{{element.name}}</span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+            <mat-cell *matCellDef="let element"><span class="ellipsis">{{element.lastName}}</span></mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Rol </mat-header-cell>
+            <mat-cell *matCellDef="let element"><span class="ellipsis">{{element.role}}</span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="mail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+            <mat-cell *matCellDef="let element"><span class="ellipsis">{{element.mail}}</span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="enable">
+            <mat-header-cell *matHeaderCellDef style="justify-content: centers;" mat-sort-header> Activo </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-icon  mat-icon-button [ngStyle]="{'color' : element.enable?'green':'gray'}">cloud</mat-icon>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="update">
+            <mat-header-cell *matHeaderCellDef>Update</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-icon  mat-icon-button class="edit-item-button" (click)="update(element)">edit</mat-icon>
+            </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+              <mat-icon mat-icon-button class="delete-item-button" (click)="delete(element)">delete</mat-icon>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" ></mat-paginator>
+
+       
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
