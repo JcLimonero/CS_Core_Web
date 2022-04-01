@@ -259,11 +259,20 @@ p .mat-icon {
     justify-content: center;
   }
   
-
   .mat-column-enable {
     flex: 0 0 60px;
     justify-content: center;
     margin-right: 10px;
+  }
+
+  .Add-new-value{
+    color: navy;
+    justify-content: flex-end;
+    display: flex;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
   }
 
   

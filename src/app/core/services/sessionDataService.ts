@@ -21,7 +21,6 @@ export class SessionDataService {
     this.cookieService.set(AppSettings.tokenAuthName,token);
 
     var decoded = jwt_decode(token);
-    console.log(decoded);
   }
 
   getRole()
@@ -47,7 +46,6 @@ export class SessionDataService {
       if (token)
       {
         var decoded: any = jwt_decode(token);
-        console.log(decoded);
         return decoded.Name;
       }
     }
@@ -77,9 +75,7 @@ export class SessionDataService {
   
   existAuthtoken()
   {
-    let token = this.cookieService.get(AppSettings.tokenAuthName);
-    console.log(token);
-
+    let token = this.cookieService.get(AppSettings.tokenAuthName);    
     if (token)
     {
         var decoded: any = jwt_decode(token);

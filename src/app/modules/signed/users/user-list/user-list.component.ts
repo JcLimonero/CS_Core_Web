@@ -9,6 +9,7 @@ import { NGXLogger } from 'ngx-logger';
 import { ApiService } from 'src/app/core/services/api.services';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ConfirmDialogComponent } from 'src/app/shared/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { DialogUsersComponent } from 'src/app/shared/components/dialogs/dialog-users/dialog-users.component';
 
 @Component({
   selector: 'app-user-list',
@@ -55,27 +56,46 @@ export class UserListComponent implements OnInit, AfterViewInit {
       this.api.list("Users").subscribe( res => 
         { 
           this.dataSource.data= res.data;
-          console.log(res)
         });
     }
 
+    create() {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {title:"Crear Usuario", data:null};
+      dialogConfig.disableClose = true;
+      let dialogRef = this.dialog.open(DialogUsersComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(value => {
+
+      });
+    }
+
     update(element: any) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {title:"Editar Usuario", data:element};
+      dialogConfig.disableClose = true;
+      let dialogRef = this.dialog.open(DialogUsersComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(value => {
+
+      });
     }
 
     delete(element: any) {
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.data = {title:"Eliminar Usuario", message:"Esta seguro que desea eliminar el usuario: </br></br><b>"+ element.name + "</b>"};
+      dialogConfig.data = {title:"Eliminar Usuario", message:"Esta seguro que desea eliminar el usuario: <b>"+ element.name +" "+ element.lastName + "</b>?"};
       dialogConfig.disableClose = true;
       let dialogRef = this.dialog.open(ConfirmDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(value => {
-      if(value)
-      {
-        this.api.delete("Users",element.id).subscribe(res =>{
-          this.notificationService.OkSnackBar("Usuario eliminado correctamente");
-          this.LoadData();
-        }); 
-      }      
-    });     
+      dialogRef.afterClosed().subscribe(value => {
+        if(value)
+        {
+          this.api.delete("Users",element.id).subscribe(res =>{
+            this.notificationService.OkSnackBar("Usuario eliminado correctamente");
+            this.LoadData();
+          },error=>{
+            this.notificationService.errorSnackBar("Usuario no pudo ser eliminado correctamente");
+            console.error(error);
+          }); 
+        }      
+      });     
     }
 }
  

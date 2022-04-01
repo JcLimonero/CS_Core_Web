@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             this.sessionDataService.createAuthToken(data);
             this.router.navigate(['/app']);
         },error=>{
-            console.log(error)
+            console.error(error)
             this.notificationService.errorSnackBar(error.error);
                     this.loading = false;
         });

@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
         private sessionDataService: SessionDataService) { }
 
     canActivate() {
-         //console.log("asdasd")
+         
      /*   const user = this.authService.getCurrentUser();
         if(!this.sessionDataService.existAuthtoken())
         {

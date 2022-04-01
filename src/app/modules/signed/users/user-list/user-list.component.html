@@ -10,6 +10,10 @@
 
     <mat-card>
       <mat-card-content>
+        <div class="Add-new-value" (click)="create()">
+          + Agregar Usuario
+        </div>
+         
         <mat-table  [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
@@ -40,14 +44,14 @@
           </ng-container>
 
           <ng-container matColumnDef="update">
-            <mat-header-cell *matHeaderCellDef>Update</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
               <mat-icon  mat-icon-button class="edit-item-button" (click)="update(element)">edit</mat-icon>
             </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="delete">
-            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell mat-cell *matCellDef="let element">
               <mat-icon mat-icon-button class="delete-item-button" (click)="delete(element)">delete</mat-icon>
             </mat-cell>

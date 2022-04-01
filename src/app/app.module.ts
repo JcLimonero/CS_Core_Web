@@ -9,10 +9,12 @@ import { CustomMaterialModule } from './shared/modules/custom-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
+import { DialogUsersComponent } from './shared/components/dialogs/dialog-users/dialog-users.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogUsersComponent
   ],
   imports: [
     BrowserModule,
