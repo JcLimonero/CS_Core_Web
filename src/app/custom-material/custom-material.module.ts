@@ -75,7 +75,8 @@ export const MY_FORMATS = {
     MatIconModule,    MatInputModule,    MatListModule,   MatMenuModule,    MatNativeDateModule,    MatPaginatorModule,
     MatProgressBarModule,    MatProgressSpinnerModule,    MatRadioModule,    MatRippleModule,    MatSelectModule,
     MatSidenavModule,    MatSliderModule,    MatSlideToggleModule,    MatSnackBarModule,    MatSortModule,    MatTableModule,
-    MatTabsModule,    MatToolbarModule,    MatTooltipModule,    MatTreeModule,    OverlayModule,    PortalModule,
+    MatTabsModule,    MatToolbarModule,    MatTooltipModule,    MatTreeModule,    OverlayModule,    PortalModule, MatFormFieldModule,
+    MatMomentDateModule
   ],
   exports: [
     CommonModule,
@@ -93,7 +94,8 @@ export const MY_FORMATS = {
     MatIconModule,    MatInputModule,    MatListModule,   MatMenuModule,    MatNativeDateModule,    MatPaginatorModule,
     MatProgressBarModule,    MatProgressSpinnerModule,    MatRadioModule,    MatRippleModule,    MatSelectModule,
     MatSidenavModule,    MatSliderModule,    MatSlideToggleModule,    MatSnackBarModule,    MatSortModule,    MatTableModule,
-    MatTabsModule,    MatToolbarModule,    MatTooltipModule,    MatTreeModule,    OverlayModule,    PortalModule,
+    MatTabsModule,    MatToolbarModule,    MatTooltipModule,    MatTreeModule,    OverlayModule,    PortalModule, MatFormFieldModule,
+    MatMomentDateModule
   ],
   providers: [
     {

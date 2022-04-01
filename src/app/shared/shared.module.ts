@@ -5,8 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
 import { LimitToPipe } from './pipes/limit-to.pipe';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { ContentPlaceholderAnimationComponent } from './content-placeholder-animation/content-placeholder-animation.component';
+import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 import { LocalDatePipe } from './pipes/local-date.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import {MatCardModule} from '@angular/material/card'
@@ -23,8 +22,7 @@ import { PortalInterceptor } from './Interceptors/portal.interceptor';
     MatCardModule
   ],
   declarations: [
-    ConfirmDialogComponent,
-    ContentPlaceholderAnimationComponent,
+    ConfirmDialogComponent,    
     LimitToPipe,
     LocalDatePipe,
     YesNoPipe,
@@ -37,7 +35,6 @@ import { PortalInterceptor } from './Interceptors/portal.interceptor';
     CustomMaterialModule,
     LimitToPipe,
     ConfirmDialogComponent,
-    ContentPlaceholderAnimationComponent,
     LocalDatePipe,
     YesNoPipe,
     RouterModule,
