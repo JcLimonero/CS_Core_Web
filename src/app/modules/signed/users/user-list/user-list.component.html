@@ -10,7 +10,7 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="Add-new-value" (click)="create()">
+        <div class="Add-new-value" (click)="create()" *ngIf="roleAcessObject.isCreateEnabled">
           + Agregar Usuario
         </div>
          
@@ -21,7 +21,7 @@
           </ng-container>
 
           <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </mat-header-cell>
             <mat-cell *matCellDef="let element"><span class="ellipsis">{{element.lastName}}</span></mat-cell>
           </ng-container>
 

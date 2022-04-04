@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { SpinnerService } from '../../../core/services/spinner.service';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { SessionDataService } from 'src/app/core/services/sessionDataService';
+import { RoleAccess } from 'src/app/shared/models/role-access';
+import { RoleAccessService } from 'src/app/core/services/role-access.service';
 
 @Component({
     selector: 'app-layout',
@@ -22,11 +24,12 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     isAdmin: boolean = false;
 
     private autoLogoutSubscription: Subscription = new Subscription;
+    enableUsers: boolean;
+    
 
     constructor(private changeDetectorRef: ChangeDetectorRef,
         private media: MediaMatcher,
         public spinnerService: SpinnerService,
-        private authService: AuthenticationService,
         private authGuard: AuthGuard,
         private sessionDataService: SessionDataService) {
 
@@ -38,6 +41,9 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit(): void {
        
+        let roleAccessService = new RoleAccessService();
+        this.enableUsers = roleAccessService.getPermissions(this.sessionDataService.getRole(),'Users').isModuleEnabled;
+        
         this.userName = this.sessionDataService.getCurrentUser();
 
         // Auto log-out subscription

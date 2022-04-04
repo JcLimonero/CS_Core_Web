@@ -56,22 +56,23 @@ export class DialogUsersComponent implements OnInit {
 
   setFormValues(){    
     if(this.dataForm != undefined)
-    {
-      this.generalForm.get('name').setValue(this.dataForm.name);
-      this.generalForm.get('id').setValue(this.dataForm.id);
-      this.generalForm.get('last_name').setValue(this.dataForm.lastName);
-      this.generalForm.get('email').setValue(this.dataForm.mail);
-      this.generalForm.get('enable').setValue(this.dataForm.enable);
-      this.generalForm.get('role').setValue(this.dataForm.idRole);
-    }
-    else{
-      this.generalForm.get('name').setValue("");
-      this.generalForm.get('id').setValue("");
-      this.generalForm.get('last_name').setValue("");
-      this.generalForm.get('email').setValue("");
-      this.generalForm.get('enable').setValue(false);
-      this.generalForm.get('role').setValue(3);
-    }
+      this.generalForm.setValue({
+        name:this.dataForm.name,
+        id:this.dataForm.id,
+        last_name:this.dataForm.lastName,
+        email:this.dataForm.mail,
+        enable:this.dataForm.enable,
+        role:this.dataForm.idRole.toString()
+      });          
+    else
+      this.generalForm.setValue({
+        name:"",
+        id:0,
+        last_name:"",
+        email:"",
+        enable:false,
+        role:'3'
+      });      
   }
 
   loadCatalogs(){

@@ -78,7 +78,7 @@
 
         <h3 mat-subheader>Configuración</h3>
 
-        <a mat-list-item [routerLink]="['/app/users']" routerLinkActive="active">
+        <a mat-list-item [routerLink]="['/app/users']" routerLinkActive="active" *ngIf="enableUsers">
           <mat-icon mat-list-icon>
             people
           </mat-icon>

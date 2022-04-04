@@ -8,8 +8,11 @@ import { Title } from '@angular/platform-browser';
 import { NGXLogger } from 'ngx-logger';
 import { ApiService } from 'src/app/core/services/api.services';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { RoleAccessService } from 'src/app/core/services/role-access.service';
+import { SessionDataService } from 'src/app/core/services/sessionDataService';
 import { ConfirmDialogComponent } from 'src/app/shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 import { DialogUsersComponent } from 'src/app/shared/components/dialogs/dialog-users/dialog-users.component';
+import { RoleAccess } from 'src/app/shared/models/role-access';
 
 @Component({
   selector: 'app-user-list',
@@ -28,15 +31,16 @@ export class UserListComponent implements OnInit, AfterViewInit {
     public pageSize = 10;
     public pageSizeOptions = [5, 10, 20];
     public pageIndex = 1;
-    public displayedColumns = [ 'name','lastName','mail','role','enable','update','delete'];
-
+    public displayedColumns = [ 'name','lastName','mail','role','enable'];
+    roleAcessObject:RoleAccess;
 
     constructor(
       private logger: NGXLogger,
       private titleService: Title,
       private api: ApiService,
       public dialog: MatDialog,
-      private notificationService: NotificationService
+      private notificationService: NotificationService,
+      private sessionDataService: SessionDataService
     ) { }
 
 
@@ -46,9 +50,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
  
   ngOnInit() {
-    this.titleService.setTitle('angular-material-template - Users');
-    this.logger.log('Users loaded');
-
+    this.SetAccess();
+    this.titleService.setTitle('angular-material-template - Users');    
     this.LoadData();
     }
 
@@ -57,6 +60,17 @@ export class UserListComponent implements OnInit, AfterViewInit {
         { 
           this.dataSource.data= res.data;
         });
+    }
+
+    SetAccess(){
+      let roleAccessService = new RoleAccessService();
+      this.roleAcessObject = roleAccessService.getPermissions(this.sessionDataService.getRole(),'Users');
+      console.log(this.roleAcessObject)
+      if(this.roleAcessObject.isUpdateEnabled)
+        this.displayedColumns.push('update')
+      if(this.roleAcessObject.isDeleteEnabled)
+        this.displayedColumns.push('delete')
+
     }
 
     create() {
