@@ -65,9 +65,9 @@ export class ApiService {
    * @param endpoint Object/data name
    * @param object Object/data as a JSON {key:value}
    */
-  public create(endpoint: string, object: any): Observable<any> {
+  public create(endpoint: string, objectValue: any): Observable<any> {
     return this.httpClient
-      .post(`${this.url}/${endpoint}`, object)
+      .post(`${this.url}/${endpoint}`, objectValue)
       .pipe(map((data: any) => {
         return data;
       }), catchError(err => throwError(err.error)));
@@ -79,9 +79,9 @@ export class ApiService {
    * @param id Object/data identifier
    * @param object Object/data as a JSON {key:value}
    */
-  public update(endpoint: string, id: string, object: any): Observable<any> {
+  public update(endpoint: string, id: string, objectValue: any): Observable<any> {
     return this.httpClient
-      .put(`${this.url}/${endpoint}/${id}`, object)
+      .put(`${this.url}/${endpoint}/${id}`, objectValue)
       .pipe(map((data: any) => {        
         return data;
       }), catchError(err => throwError(err.error)));

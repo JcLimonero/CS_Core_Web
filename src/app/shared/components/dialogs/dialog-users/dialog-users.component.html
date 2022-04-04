@@ -1,10 +1,41 @@
-<h1 mat-dialog-title>
-    {{title}}
+<div >
+  <h1 mat-dialog-title>
+      {{title}}
   </h1>
-  
-  
+  <form  [formGroup]="generalForm" style="margin-top: 30px; margin-bottom: 30px;">
+    <div style="flex-direction: row;">
+      <mat-form-field style="margin-right: 15px;">
+        <mat-label>Nombre</mat-label>
+        <input id="name" formControlName="name" matInput style="height: 35px;">      
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input id="last_name" formControlName="last_name" matInput style="height: 35px;">      
+      </mat-form-field>
+    </div>
+
+    <div style="flex-direction: row;">
+      <mat-form-field style="width: 250px; margin-right: 15px;">
+        <mat-label>Email</mat-label>
+        <input id="email" formControlName="email" matInput style="height: 35px;">      
+      </mat-form-field>
+      <mat-checkbox labelPosition="before" formControlName="enable">Habilitado</mat-checkbox>
+    </div>
+
+    <div style="flex-direction: row;">
+      <mat-form-field style="margin-right: 15px;">
+        <mat-label>Rol</mat-label>
+        <mat-select id="role" formControlName="role">
+          <mat-option *ngFor="let item of rolesCatalog" value="{{item.id}}">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>      
+    </div>
+    
+  </form>
   
   <div mat-dialog-actions style="justify-content: space-around;">
-    <button mat-button style="background-color: crimson; color: white;"  (click)="onDismiss()">Cancelar</button>
-    <button mat-raised-button style="background-color: green; color: white;" (click)="onConfirm()">Aceptar</button>
+    <button mat-flat-button color="warn" (click)="onDismiss()">Cancelar</button>
+    <button mat-flat-button color="success" [disabled]="generalForm.invalid" (click)="SaveData()">Aceptar</button>
   </div>
+
+</div>

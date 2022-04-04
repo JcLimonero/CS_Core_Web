@@ -65,7 +65,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
       dialogConfig.disableClose = true;
       let dialogRef = this.dialog.open(DialogUsersComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(value => {
-
+        this.LoadData();
       });
     }
 
@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
       dialogConfig.disableClose = true;
       let dialogRef = this.dialog.open(DialogUsersComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(value => {
-
+        this.LoadData();
       });
     }
 
