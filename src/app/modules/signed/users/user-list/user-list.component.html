@@ -10,9 +10,17 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="Add-new-value" (click)="create()" *ngIf="roleAcessObject.isCreateEnabled">
-          + Agregar Usuario
+        <div style="flex-direction: row ; display: flex; margin-bottom: 25px;">
+          <div style="width: 100%;">
+            <input #filter matInput type="text" (keyup)="applyFilter($event.target.value)" (keydown.esc)="filter.value = ''" placeholder="Buscar" style="width:95%;  border-color:dimgray !important; border-bottom-style: solid; border-width: thin;">
+            <mat-icon style="cursor: pointer; margin-bottom: 15px;" matSuffix (click)="filter.value = ''; applyFilter('')">{{filterIcon}}</mat-icon>
+          </div>
+          <div style="width:250px" class="Add-new-value" (click)="create()" *ngIf="roleAcessObject.isCreateEnabled">
+            + Agregar Usuario
+          </div>
         </div>
+        
+        
          
         <mat-table  [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="name">

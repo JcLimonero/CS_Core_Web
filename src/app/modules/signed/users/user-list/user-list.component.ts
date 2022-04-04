@@ -33,6 +33,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
     public pageIndex = 1;
     public displayedColumns = [ 'name','lastName','mail','role','enable'];
     roleAcessObject:RoleAccess;
+    public filterIcon = 'search';
 
     constructor(
       private logger: NGXLogger,
@@ -110,6 +111,11 @@ export class UserListComponent implements OnInit, AfterViewInit {
           }); 
         }      
       });     
+    }
+
+    public applyFilter = (value: string) => {
+      this.dataSource.filter = value.trim().toLocaleLowerCase();
+      this.filterIcon = value === '' ? 'search' : 'close';      
     }
 }
  
