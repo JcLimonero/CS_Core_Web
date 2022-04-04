@@ -51,8 +51,8 @@ export class AuthenticationService {
         return of(true).pipe(delay(1000));
     }
 
-    changePassword(email: string, currentPwd: string, newPwd: string) {
-        return of(true).pipe(delay(1000));
+    changePassword(currentPwd: string, newPwd: string) {
+        return this.http.post(this.url + "/UpdatePassword", {currentPwd: currentPwd, newPwd:newPwd},{responseType: 'text'});
     }
 
     passwordReset(email: string, token: string, password: string, confirmPassword: string): any {

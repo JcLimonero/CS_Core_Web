@@ -52,6 +52,20 @@ export class SessionDataService {
     return undefined;
   }
 
+  getCurrentUserId(){
+    if (this.existAuthtoken())
+    {
+      let token = this.cookieService.get(AppSettings.tokenAuthName);
+
+      if (token)
+      {
+        var decoded: any = jwt_decode(token);        
+        return decoded.IdUser;
+      }
+    }
+    return undefined;
+  }
+
   removeToken()
   {
       this.cookieService.delete(AppSettings.tokenAuthName);

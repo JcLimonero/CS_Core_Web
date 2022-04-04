@@ -1,10 +1,9 @@
 import { NotificationService } from '../../../../core/services/notification.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { NGXLogger } from 'ngx-logger';
-
-import { AuthenticationService } from '../../../../core/services/auth.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
+import { SessionDataService } from 'src/app/core/services/sessionDataService';
+import { AuthenticationService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-change-password',
@@ -21,9 +20,11 @@ export class ChangePasswordComponent implements OnInit {
   newPasswordConfirm!: string;
   disableSubmit!: boolean;
 
-  constructor(private authService: AuthenticationService,
-    private logger: NGXLogger,
+  constructor(
     private spinnerService: SpinnerService,
+    private sessionDataService: SessionDataService,    
+    private authService: AuthenticationService,
+    
     private notificationService: NotificationService) {
 
     this.hideCurrentPassword = true;
@@ -46,6 +47,8 @@ export class ChangePasswordComponent implements OnInit {
     this.spinnerService.visibility.subscribe((value) => {
       this.disableSubmit = value;
     });
+
+    console.log(this.sessionDataService.getCurrentUserId());
   }
 
   changePassword() {
@@ -55,18 +58,12 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
-    const email = this.authService.getCurrentUser().email;
-
-    this.authService.changePassword(email, this.currentPassword, this.newPassword)
-      .subscribe(
-        data => {
-          this.logger.info(`User ${email} changed password.`);
-          this.form.reset();
-          this.notificationService.OkSnackBar('Your password has been changed.');
-        },
-        error => {
-          this.notificationService.errorSnackBar(error.error);
-        }
-      );
-  }
+    this.authService.changePassword(this.form.get("currentPassword").value,this.form.get("newPasswordConfirm").value).subscribe(res =>{
+      this.notificationService.OkSnackBar("Contraseña actualizada correctamente");
+    },error=>{
+      console.log(error)
+      this.notificationService.errorSnackBar("Constraseña no se pudo actualizar: "+ error.error );
+      console.error(error.error);
+    }); 
+    }
 }
