@@ -74,8 +74,24 @@ export class SessionDataService {
 
       if (token)
       {
-        var decoded: any = jwt_decode(token);           
+        var decoded: any = jwt_decode(token);    
+        console.log(decoded);       
         return decoded.Mail;
+      }
+    }
+    return undefined;
+  }
+
+  getImageProfile(): string {
+    if (this.existAuthtoken())
+    {
+      let token = this.cookieService.get(AppSettings.tokenAuthName);
+
+      if (token)
+      {
+        var decoded: any = jwt_decode(token);    
+        console.log(decoded);       
+        return decoded.UrlImageUser;
       }
     }
     return undefined;

@@ -11,6 +11,8 @@ import { YesNoPipe } from '../pipes/yes-no.pipe';
 import {MatCardModule} from '@angular/material/card'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PortalInterceptor } from '../Interceptors/portal.interceptor';
+import { FileUploadModule } from 'ng2-file-upload';
+import {FilePickerModule} from 'ngx-awesome-uploader';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { PortalInterceptor } from '../Interceptors/portal.interceptor';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    FileUploadModule ,
+    FilePickerModule
   ],
   declarations: [
     ConfirmDialogComponent,    
@@ -38,7 +42,9 @@ import { PortalInterceptor } from '../Interceptors/portal.interceptor';
     LocalDatePipe,
     YesNoPipe,
     RouterModule,
-    MatCardModule
+    MatCardModule,
+    FileUploadModule,
+    FilePickerModule
   ],
   entryComponents: [
     ConfirmDialogComponent

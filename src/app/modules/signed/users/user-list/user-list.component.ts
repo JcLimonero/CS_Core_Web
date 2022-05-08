@@ -66,7 +66,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
     SetAccess(){
       let roleAccessService = new RoleAccessService();
       this.roleAcessObject = roleAccessService.getPermissions(this.sessionDataService.getRole(),'Users');
-      console.log(this.roleAcessObject)
       if(this.roleAcessObject.isUpdateEnabled)
         this.displayedColumns.push('update')
       if(this.roleAcessObject.isDeleteEnabled)

@@ -21,6 +21,7 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     mobileQuery: MediaQueryList;
     showSpinner: boolean = false;
     userName: string = "";
+    imageProfile: string = "";
     isAdmin: boolean = false;
 
     private autoLogoutSubscription: Subscription = new Subscription;
@@ -45,6 +46,7 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
         this.enableUsers = roleAccessService.getPermissions(this.sessionDataService.getRole(),'Users').isModuleEnabled;
         
         this.userName = this.sessionDataService.getCurrentUser();
+        this.imageProfile = this.sessionDataService.getImageProfile();
 
         // Auto log-out subscription
         const timer$ = timer(2000, 5000);

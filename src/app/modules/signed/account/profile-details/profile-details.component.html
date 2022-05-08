@@ -1,6 +1,48 @@
-<div class="profile-card">
-  <img src="assets/user.png" [alt]="fullName">
+<style>
+  .my-drop-zone { border: dotted 3px lightgray; }
+  .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+  .another-file-over-class { border: dotted 3px green; }
 
+  html, body { height: 100%; }
+</style>
+
+<div class="profile-card">
+  <div style="justify-content: center; flex-direction: row;">
+    
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <img src={{imageProfile}} style="width: 150px;" [alt]="fullName">
+      <button mat-raised-button class="accept-button" style="width: 150px; margin-top: 15px;" *ngIf="!editImageProfile" (click)="OnEditImageProfile()">Editar Imagen</button>  
+    </div>
+    
+    <div style="display: flex; justify-content: center;" *ngIf="editImageProfile">
+      <div class="uploader-wrapper">
+        <ngx-awesome-uploader
+        [adapter]="adapter"
+        [fileMaxCount]="1"
+        [fileMaxSize]="700"
+        [uploadType]="'single'"
+        [enableCropper]="false"
+        (validationError)="onValidationError($event)"
+        [fileExtensions]="['pdf', 'jpg', 'jpeg', 'png', 'mp4', 'css']"
+        (uploadSuccess)="onUploadSuccess($event)"
+        (removeSuccess)="onRemoveSuccess($event)"
+        [customValidator]="myCustomValidator"
+        [captions]="captions"
+        [accept]="'.jpg, .png'"
+        [showPreviewContainer]="false"
+        >
+        </ngx-awesome-uploader>
+
+      
+      </div>
+    </div>
+
+    
+
+    
+  
+  </div>
+  <button class="cancel-button" mat-raised-button style="width: 150px; margin-top: 15px;" *ngIf="editImageProfile" (click)="OnCancelImageProfile()">Cancelar</button>  
   <h2 class="title">
     {{fullName}}
   </h2>

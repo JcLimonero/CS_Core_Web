@@ -19,10 +19,10 @@
     <mat-menu #notificationMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
 
       <a mat-menu-item>
-        <span>You have new tasks</span>
+        <span>Tienes nuevas tareas</span>
       </a>
       <a mat-menu-item>
-        <span>You have a new message</span>
+        <span>Tienes nuevos mensajes</span>
       </a>
 
     </mat-menu>
@@ -30,7 +30,17 @@
 
 
     <button mat-button [matMenuTriggerFor]="userMenu">
-      <mat-icon>person</mat-icon>
+      <!-- <mat-icon>person</mat-icon> -->
+      
+      <img src={{imageProfile}}
+                  alt="avatar" style="position: relative;
+                  display: inline-block;
+                  line-height: 50px;
+                  width: 50px;
+                  height: 50px;
+                  white-space: nowrap;
+                  border-radius: 50px;
+                  vertical-align: middle;">
       <span fxShow fxHide.xs>
         {{userName}}
       </span>
@@ -40,6 +50,7 @@
       <a mat-menu-item [routerLink]="['/app/account/profile']">
         <mat-icon>person</mat-icon>
         <span>Account</span>
+
       </a>
 
       <a mat-menu-item [routerLink]="['/login']">

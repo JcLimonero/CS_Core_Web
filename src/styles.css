@@ -286,8 +286,23 @@ p .mat-icon {
     cursor: pointer;
   }
 
+  .cancel-button {
+    color: white;
+    background-color: crimson;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+  }
 
-  /* Success syling */
+  .accept-button {
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  
 
 .mat-button.mat-success,
 .mat-stroked-button.mat-success {

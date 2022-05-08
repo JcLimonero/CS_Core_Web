@@ -5,7 +5,6 @@ export class RoleAccessService {
     roleAccessObject : RoleAccess
 
     public getPermissions(id_role:string, module:string) : RoleAccess {
-      console.log(id_role)
         this.roleAccessObject = new RoleAccess();
         this.roleAccessObject.id_role = id_role;
         this.roleAccessObject.module = module;        

@@ -23,8 +23,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor(
     private spinnerService: SpinnerService,
     private sessionDataService: SessionDataService,    
-    private authService: AuthenticationService,
-    
+    private authService: AuthenticationService,    
     private notificationService: NotificationService) {
 
     this.hideCurrentPassword = true;
@@ -46,9 +45,7 @@ export class ChangePasswordComponent implements OnInit {
 
     this.spinnerService.visibility.subscribe((value) => {
       this.disableSubmit = value;
-    });
-
-    console.log(this.sessionDataService.getCurrentUserId());
+    });    
   }
 
   changePassword() {
@@ -60,8 +57,13 @@ export class ChangePasswordComponent implements OnInit {
 
     this.authService.changePassword(this.form.get("currentPassword").value,this.form.get("newPasswordConfirm").value).subscribe(res =>{
       this.notificationService.OkSnackBar("Contraseña actualizada correctamente");
+      this.form.get('currentPassword').setValue("");
+
+      this.form.get('newPassword').setValue("");
+  
+      this.form.get('newPasswordConfirm').setValue("");
+  
     },error=>{
-      console.log(error)
       this.notificationService.errorSnackBar("Constraseña no se pudo actualizar: "+ error.error );
       console.error(error.error);
     }); 
